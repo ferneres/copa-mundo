@@ -62,4 +62,12 @@ class TeamController {
         return $this->container->view->render($response, 'team.php', $data);
     }
 
+
+    public function getByGroup(Request $request, Response $response, array $params) {
+        $grupo = $params['grupo']; 
+
+        $data['team'] = $this->teamRepository->getByGroup($grupo);
+    
+        return $this->container->view->render($response, 'team.php', $data);
+    }
 }

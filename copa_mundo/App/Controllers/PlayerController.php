@@ -50,4 +50,6 @@ class PlayerController {
         return $this->container->view->render($response, 'player.php', $data);
     }
 
+
+    
 }

@@ -28,6 +28,7 @@ $app = new App($settings);
 $app->get('/', HomeController::class . ":home");
 $app->get('/teams', TeamController::class . ":getAll");
 $app->get('/teams/{id}', TeamController::class . ":getById");
+$app->get('/teams/grupo/{grupo}', TeamController::class . ":getByGroup");
 
 $app->get('/players/{id}', PlayerController::class . ":getById");
 $app->get('/players/name/{name}', PlayerController::class . ":getByName");
