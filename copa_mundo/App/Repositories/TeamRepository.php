@@ -9,8 +9,7 @@ class TeamRepository {
 
     public $connection;
 
-    public function __construct()
-    {
+    public function __construct(){
         $factory = new ConnectionFactory();
         $this->connection = $factory->getConnection();
     }
@@ -54,22 +53,22 @@ class TeamRepository {
         return $resultados;
     }
 
-    public function getByName(string $team_name){
-        $sql = "SELECT * FROM tb_selecoes WHERE team_name = :team_name";
+    public function getByName(string $selecao){
+        $sql = "SELECT * FROM tb_selecoes WHERE selecao = :selecao";
 
         $table = $this->connection->prepare($sql); 
-        $table->bindParam(":team_name", $team_name);
+        $table->bindParam(":selecao", $selecao);
 
         $table->execute();
 
         return $table->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getByGroup(string $group){
-        $sql = "SELECT * FROM tb_selecoes WHERE tb_selecoes.group = :team_group";
+    public function getByGroup(string $grupo){
+        $sql = "SELECT * FROM tb_selecoes WHERE grupo = :grupo";
         
         $table = $this->connection->prepare($sql); 
-        $table->bindParam(":team_group", $group);
+        $table->bindParam(":grupo", $grupo);
 
         $table->execute();
 

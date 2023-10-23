@@ -13,8 +13,7 @@ class TeamController {
     private TeamRepository $teamRepository;
     private PlayersRepository $playerRepository;
 
-    public function __construct($container)
-    {
+    public function __construct($container){
         $this->container = $container;
 
         //Substitua as interrogações por TeamRepository
@@ -59,15 +58,28 @@ class TeamController {
 
         $data['team'] = $this->teamRepository->getAll();
 
+
         return $this->container->view->render($response, 'team.php', $data);
     }
 
+    public function getByName(Request $request, Response $response, array $params){        
+        $selecao = $params['selecao'];
 
-    public function getByGroup(Request $request, Response $response, array $params) {
-        $grupo = $params['grupo']; 
+        $data['team'] = $this->teamRepository->getByName($selecao);
 
-        $data['team'] = $this->teamRepository->getByGroup($grupo);
-    
+        //  print "<h1>Essa rota não possui uma tela associada</h1><br/>";
+        // print_r($data);
+        // exit;
+
         return $this->container->view->render($response, 'team.php', $data);
+    }
+
+    public function getByGroup(Request $request, Response $response, array $params){
+
+        $grupo = $params['group'];
+
+        $data['group'] = $this->teamRepository->getByGroup($grupo);
+
+        return $this->container->view->render($response, 'group.php', $data);
     }
 }

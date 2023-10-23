@@ -38,7 +38,6 @@
 
         <h2 class="title">Album de Figurinhas</h2>
         <h5 class="subtitle">Catar 2022</h5>
-
         <div class="container mb-3 p-0">
 
         <div class="input-group input-group-lg">

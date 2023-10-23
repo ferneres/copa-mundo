@@ -9,8 +9,7 @@ class PlayersRepository {
 
     public PDO $connection;
 
-    public function __construct()
-    {
+    public function __construct(){
         $factory = new ConnectionFactory();
         $this->connection = $factory->getConnection();
     }
@@ -21,6 +20,15 @@ class PlayersRepository {
 
         $table = $this->connection->query($sql);
         return $table->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAll(){
+        $sql = "SELECT * FROM tb_jogadores";
+
+        $table = $this->connection->query($sql); 
+        $resultados = $table->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultados;
     }
 
     public function getById(int $id){
@@ -57,6 +65,18 @@ class PlayersRepository {
 
         return $table->fetchAll(PDO::FETCH_ASSOC);
     }
+
+     public function getByPosition(string $posicao){
+        $sql = "SELECT * FROM tb_jogadores WHERE posicao = :posicao";
+
+        $table = $this->connection->prepare($sql); 
+        $table->bindParam(":posicao", $posicao);
+
+        $table->execute();
+
+        return $table->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 
 }

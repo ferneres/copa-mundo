@@ -11,8 +11,7 @@ class HomeController {
     private mixed $container;
     private PlayersRepository $repository;
 
-    public function __construct($container)
-    {
+    public function __construct($container){
         $this->container = $container;
         $this->repository = new PlayersRepository();
     }
