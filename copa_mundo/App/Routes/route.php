@@ -27,10 +27,10 @@ $app = new App($settings);
 //Adicione suas rotas aqui!
 $app->get('/', HomeController::class . ":home");
 $app->get('/teams', TeamController::class . ":getAll");
+$app->get('/teams/selecao[/{selecao}]', TeamController::class . ":getByName");
 $app->get('/teams/{id}', TeamController::class . ":getById");
 $app->get('/teams/group/{group}', TeamController::class . ":getByGroup");
 $app->get('/teams/abrev/{abrev}', TeamController::class . ":getByAbrev");
-$app->get('/teams/selecao/{selecao}', TeamController::class . ":getByName");
 
 
 $app->get('/players', PlayerController::class . ":getAll");

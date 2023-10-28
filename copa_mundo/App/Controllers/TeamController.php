@@ -55,21 +55,25 @@ class TeamController {
     }
 
     public function getByAbrev(Request $request, Response $response, array $params){
+        $abrev= $params['abrev'];
 
-        $data['team'] = $this->teamRepository->getAll();
-
+        $data['team'] = $this->teamRepository->getByAbrev($abrev);
 
         return $this->container->view->render($response, 'team.php', $data);
     }
 
     public function getByName(Request $request, Response $response, array $params){        
-        $selecao = $params['selecao'];
+        
+        $selecao = isset($params['selecao']) ? $params['selecao'] :  $request->getParam("campo_selecao");
 
         $data['team'] = $this->teamRepository->getByName($selecao);
 
-        //  print "<h1>Essa rota não possui uma tela associada</h1><br/>";
-        // print_r($data);
-        // exit;
+        if($data['team']['id'] == null) {
+            $data['team'] = $this->teamRepository->getByName("Brasil");
+            $data['mensagem'] = "Selecao não encontrada";
+        }
+
+        $data['players'] = $this->playerRepository->getByTeamId($data['team']['id']);
 
         return $this->container->view->render($response, 'team.php', $data);
     }

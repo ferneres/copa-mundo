@@ -16,25 +16,9 @@
 <body>
 
     <div class="container">
-        <header>
-            <a class="navbar-brand" href="<?= $BASE_PATH ?>">
-                <img src="<?= $BASE_PATH ?>/Public/images/logos/logo.webp" height="80px" width="auto" style="text-align: center;" alt="">
-            </a>
+    
+        <?php require_once __DIR__ . "/includes/cabecalho.php"; ?>
 
-            <ul class="nav">
-                <li class="nav-item">
-                  <a class="nav-link active" href="<?= $BASE_PATH ?>">Home (aleatórios)</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?= $BASE_PATH ?>/teams">Seleções</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?= $BASE_PATH ?>/teams/25">Brasil</a>
-                </li>
-
-              </ul>
-        
-        </header>
 
         <h2 class="title">Album de Figurinhas</h2>
         <h5 class="subtitle">Catar 2022</h5>

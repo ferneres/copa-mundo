@@ -16,34 +16,18 @@
 <body>
 
     <div class="container">
-        <header>
-            <a class="navbar-brand" href="http://localhost:8080/">
-                <img src="http://localhost:8080/Public/images/logos/logo.webp" height="80px" width="auto" style="text-align: center;" alt="">
-            </a>
-
-            <ul class="nav">
-                <li class="nav-item">
-                  <a class="nav-link active" href="http://localhost:8080/">Home (aleatórios)</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="http://localhost:8080/teams">Seleções</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="http://localhost:8080/teams/25">Brasil</a>
-                </li>
-
-              </ul>
-        
-        </header>
+    <?php require_once __DIR__ . "/includes/cabecalho.php"; ?>
 
         <h2 class="title">Album de Figurinhas</h2>
         <h5 class="subtitle">Catar 2022</h5>
         <div class="container mb-3 p-0">
 
-        <div class="input-group input-group-lg">
-            <input type="text" class="form-control" placeholder="Brasil...">
-            <button class="btn btn-primary" type="button" id="button-addon2">Procure sua seleção</button>
-        </div>
+        <form action="http://localhost:8080/teams/selecao" method="get">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Brasil..." name="campo_selecao">
+                <button class="btn btn-primary" type="submit" id="button-addon2">Procure sua seleção</button>
+            </div>
+        </form>
       
         </div>
 
